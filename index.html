@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthony Arondain | Field Support Engineer</title>
+<meta name="description" content="Anthony Villapando Arondain, Field Support Engineer. Reach me for work and business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#050506;--blood:#e11d2e;--ember:#ff4d3d;--bone:#f2eded;--smoke:#9a8f92}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 70% 30%,#1a0409 0%,var(--ink) 60%);color:var(--bone);font-family:Sora,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+main,footer{position:relative;z-index:1}
+/* loader */
+#load{position:fixed;inset:0;z-index:99;background:var(--ink);display:grid;place-items:center;transition:opacity .8s,visibility .8s}
+#load.done{opacity:0;visibility:hidden}
+#load div{width:min(260px,60vw);text-align:center;font-weight:300;letter-spacing:.3em;font-size:.8rem;color:var(--smoke)}
+#load i{display:block;height:2px;margin-top:1rem;background:linear-gradient(90deg,var(--blood),var(--ember));transform-origin:left;animation:ld 1.3s cubic-bezier(.7,0,.2,1) forwards;box-shadow:0 0 18px var(--blood)}
+@keyframes ld{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* cursor */
+.cur{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--ember);border-radius:50%;z-index:50;pointer-events:none;mix-blend-mode:screen;transition:width .25s,height .25s,margin .25s,background .25s;box-shadow:0 0 20px rgba(255,77,61,.6)}
+.cur.big{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(225,29,46,.18)}
+@media (pointer:coarse){.cur{display:none}}
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6vw 14vh}
+.live{display:inline-flex;align-items:center;gap:.6rem;font-size:.85rem;color:var(--smoke);margin-bottom:1.4rem}
+.live::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--blood);box-shadow:0 0 0 0 rgba(225,29,46,.7);animation:pl 1.8s infinite}
+@keyframes pl{70%{box-shadow:0 0 0 12px rgba(225,29,46,0)}100%{box-shadow:0 0 0 0 rgba(225,29,46,0)}}
+h1{font-weight:800;font-size:clamp(3.2rem,12vw,10rem);line-height:.9;letter-spacing:-.045em}
+.gl{display:block;position:relative;width:fit-content}
+.gl.o{color:transparent;-webkit-text-stroke:1.5px var(--blood);text-shadow:0 0 60px rgba(225,29,46,.35)}
+.gl::before,.gl::after{content:attr(data-t);position:absolute;left:0;top:0;opacity:0;pointer-events:none}
+.gl::before{color:#00e5ff;-webkit-text-stroke:0}
+.gl::after{color:var(--ember);-webkit-text-stroke:0}
+.gl:hover::before{opacity:.8;animation:g1 .5s steps(2) infinite}
+.gl:hover::after{opacity:.8;animation:g2 .5s steps(2) infinite}
+@keyframes g1{0%{transform:translate(-4px,2px);clip-path:inset(10% 0 60% 0)}50%{transform:translate(3px,-2px);clip-path:inset(55% 0 10% 0)}100%{transform:translate(-2px,0);clip-path:inset(30% 0 40% 0)}}
+@keyframes g2{0%{transform:translate(4px,-2px);clip-path:inset(60% 0 5% 0)}50%{transform:translate(-3px,2px);clip-path:inset(5% 0 70% 0)}100%{transform:translate(2px,0);clip-path:inset(40% 0 30% 0)}}
+.role{margin-top:1.6rem;font-weight:300;font-size:clamp(1.05rem,2vw,1.5rem);color:var(--smoke);max-width:36ch}
+.role b{color:var(--bone);font-weight:400}
+.cta{display:inline-block;margin-top:2rem;padding:1rem 2rem;background:var(--blood);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;transition:box-shadow .3s,transform .3s}
+.cta:hover,.cta:focus-visible{box-shadow:0 0 50px rgba(225,29,46,.8);transform:translateY(-3px);outline:none}
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid rgba(225,29,46,.3);background:rgba(225,29,46,.06);backdrop-filter:blur(6px);padding:1rem 0;white-space:nowrap}
+.mq div{display:inline-block;animation:mq 26s linear infinite;font-weight:800;font-size:clamp(1.4rem,3.5vw,2.6rem);color:transparent;-webkit-text-stroke:1px var(--blood);letter-spacing:-.01em}
+.mq b{color:var(--blood);-webkit-text-stroke:0;margin:0 1.6rem}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* contact */
+.contact{padding:14vh 6vw 16vh}
+.contact h2{font-size:clamp(2rem,5vw,3.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-bottom:.8rem}
+.contact>p{color:var(--smoke);margin-bottom:3.4rem;max-width:46ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.6rem;perspective:1100px}
+.card{--mx:50%;--my:50%;display:flex;flex-direction:column;position:relative;padding:2rem 1.7rem 1.6rem;min-height:230px;text-decoration:none;color:inherit;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.01));border:1px solid rgba(225,29,46,.4);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .2s ease-out,border-color .3s,box-shadow .4s,opacity .8s;transform-style:preserve-3d;overflow:hidden;opacity:0}
+.card.in{opacity:1;animation:rise .9s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(60px) rotateX(35deg)}}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(280px circle at var(--mx) var(--my),rgba(255,77,61,.32),transparent 65%);opacity:0;transition:opacity .3s}
+.card::after{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--ember),transparent);transform:translateX(-100%)}
+.card:hover,.card:focus-visible{border-color:var(--ember);box-shadow:0 25px 80px rgba(225,29,46,.4),inset 0 0 40px rgba(225,29,46,.1);outline:none}
+.card:hover::before,.card:focus-visible::before{opacity:1}
+.card:hover::after{animation:sc 1.1s ease-in-out infinite}
+@keyframes sc{to{transform:translateX(100%)}}
+.card svg{width:38px;height:38px;fill:none;stroke:var(--ember);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:1.6rem;transform:translateZ(50px);filter:drop-shadow(0 0 8px rgba(255,77,61,.7))}
+.card h3{font-size:1.3rem;font-weight:700;transform:translateZ(35px)}
+.card span{display:block;margin-top:.3rem;color:var(--smoke);font-size:.95rem;word-break:break-word;transform:translateZ(22px)}
+.card em{margin-top:auto;padding-top:1.4rem;font-style:normal;font-size:.85rem;color:var(--ember);font-weight:700;transform:translateZ(30px)}
+footer{padding:2rem 6vw 3rem;color:var(--smoke);font-size:.85rem;border-top:1px solid rgba(225,29,46,.2)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mq div,.live::before,#load i{animation:none}.card{opacity:1}.card.in{animation:none}}
+</style>
+</head>
+<body>
+<div id="load"><div>ANTHONY ARONDAIN<i></i></div></div>
+<div class="cur" id="cur"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<main>
+  <section class="hero">
+    <p class="live">Open for work and business</p>
+    <h1><span class="gl" data-t="Anthony">Anthony</span><span class="gl o" data-t="Arondain">Arondain</span></h1>
+    <p class="role"><b>Field Support Engineer.</b> I keep systems running on site, so your operation doesn't stop.</p>
+    <div><a class="cta" href="#contact">Contact me</a></div>
+  </section>
+
+  <div class="mq" aria-hidden="true"><div id="mqIn"></div></div>
+
+  <section class="contact" id="contact">
+    <h2>Let's work together</h2>
+    <p>For work, projects, or business inquiries, message me on any of these.</p>
+    <div class="grid">
+      <a class="card" id="viber" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <h3>Viber</h3><span id="viberTxt"></span><em>Message me</em>
+      </a>
+      <a class="card" id="mail" href="#">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <h3>Email</h3><span id="mailTxt"></span><em>Send an email</em>
+      </a>
+      <a class="card" id="fb" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg>
+        <h3>Facebook</h3><span id="fbTxt"></span><em>Open profile</em>
+      </a>
+      <a class="card" id="ig" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg>
+        <h3>Instagram</h3><span id="igTxt"></span><em>Open profile</em>
+      </a>
+    </div>
+  </section>
+</main>
+<footer>&copy; <span id="yr"></span> Anthony Villapando Arondain</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===== EDIT YOUR DETAILS HERE ===== */
+const ME = {
+  phone: "09692493555",
+  email: "anthonyarondain25@gmail.com",
+  facebookName: "THON THON",
+  facebookUrl: "https://www.facebook.com/share/1CUcLyRfyu/",
+  instagramName: "THON THON (@thon.thon_25)",
+  instagramUrl: "https://www.instagram.com/thon.thon_25/"
+};
+/* ================================== */
+const $ = id => document.getElementById(id);
+$("viber").href = "viber://chat?number=" + encodeURIComponent("+63" + ME.phone.replace(/^0/, ""));
+$("viberTxt").textContent = ME.phone;
+$("mail").href = "mailto:" + ME.email; $("mailTxt").textContent = ME.email;
+$("fb").href = ME.facebookUrl; $("fbTxt").textContent = ME.facebookName;
+$("ig").href = ME.instagramUrl; $("igTxt").textContent = ME.instagramName;
+$("yr").textContent = new Date().getFullYear();
+$("mqIn").innerHTML = ("Field Support Engineer<b>/</b>Available for work<b>/</b>Let's talk business<b>/</b>").repeat(8);
+addEventListener("load", () => setTimeout(() => $("load").classList.add("done"), 1300));
+
+/* card reveal + tilt */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .2 });
+document.querySelectorAll(".card").forEach((c, i) => {
+  c.style.setProperty("--d", i * .12 + "s"); io.observe(c);
+  c.addEventListener("pointermove", e => {
+    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    c.style.setProperty("--mx", x * 100 + "%"); c.style.setProperty("--my", y * 100 + "%");
+    c.style.transform = `rotateX(${(.5 - y) * 16}deg) rotateY(${(x - .5) * 16}deg) translateZ(14px)`;
+  });
+  c.addEventListener("pointerleave", () => c.style.transform = "");
+});
+
+/* custom cursor */
+const cur = $("cur"); let cx = innerWidth / 2, cy = innerHeight / 2, px = cx, py = cy;
+addEventListener("pointermove", e => { px = e.clientX; py = e.clientY; });
+document.querySelectorAll("a").forEach(a => { a.addEventListener("pointerenter", () => cur.classList.add("big")); a.addEventListener("pointerleave", () => cur.classList.remove("big")); });
+
+/* 3D galaxy */
+const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let mx = 0, my = 0, sy = 0, vel = 0, lastY = 0;
+addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+try {
+  const cv = $("gl"), mob = innerWidth < 800;
+  const R = new THREE.WebGLRenderer({ canvas: cv, antialias: false, alpha: true });
+  R.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const S = new THREE.Scene(), cam = new THREE.PerspectiveCamera(60, 1, 1, 3000);
+  const fit = () => { R.setSize(innerWidth, innerHeight); cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); };
+  fit(); addEventListener("resize", fit);
+
+  const c2 = document.createElement("canvas"); c2.width = c2.height = 64;
+  const g = c2.getContext("2d"), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gr.addColorStop(0, "#fff"); gr.addColorStop(.25, "rgba(255,120,110,.9)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+
+  const N = mob ? 9000 : 22000, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+  const A = new THREE.Color(0xff5a3c), B = new THREE.Color(0x7a0010), t = new THREE.Color();
+  for (let i = 0; i < N; i++) {
+    const k = Math.pow(Math.random(), .75), rad = k * 620, ang = k * 7.5 + (i % 3) * 2.094;
+    const sp = (1 - k * .6) * 45, rn = () => (Math.random() + Math.random() + Math.random() - 1.5);
+    pos[i * 3] = Math.cos(ang) * rad + rn() * sp; pos[i * 3 + 1] = rn() * sp * .7; pos[i * 3 + 2] = Math.sin(ang) * rad + rn() * sp;
+    t.copy(A).lerp(B, Math.min(1, k * 1.15)); col.set([t.r, t.g, t.b], i * 3);
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(pos, 3)); geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+  const gal = new THREE.Points(geo, new THREE.PointsMaterial({ size: mob ? 5 : 4.5, map: new THREE.CanvasTexture(c2), vertexColors: true, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+  const grp = new THREE.Group(); grp.add(gal);
+
+  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(34, 1), new THREE.MeshBasicMaterial({ color: 0xff2a3a, wireframe: true, transparent: true, opacity: .55 }));
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(70, .7, 8, 160), new THREE.MeshBasicMaterial({ color: 0xff4d3d, transparent: true, opacity: .5 }));
+  ring.rotation.x = Math.PI / 2;
+  const ring2 = ring.clone(); ring2.scale.setScalar(1.7); ring2.material = ring.material.clone(); ring2.material.opacity = .25;
+  grp.add(core, ring, ring2);
+  grp.rotation.x = .35; grp.position.x = mob ? 0 : 190; grp.position.y = mob ? 120 : 20;
+  S.add(grp);
+
+  let tz = 560, ty = 110, camX = 0, camY = 110, camZ = 560, time = 0;
+  (function loop() {
+    time += .01;
+    sy += (scrollY - sy) * .07; vel += (Math.abs(scrollY - lastY) - vel) * .1; lastY = scrollY;
+    const prog = sy / Math.max(1, document.body.scrollHeight - innerHeight);
+    tz = 560 - prog * 430; ty = 110 - prog * 90;
+    camX += (mx * 140 - camX) * .04; camY += (ty + my * -70 - camY) * .04; camZ += (tz - camZ) * .05;
+    cam.position.set(camX, camY, camZ); cam.lookAt(mob ? 0 : 60, 0, 0);
+    if (!still) { gal.rotation.y += .0009 + vel * .0004; core.rotation.y -= .006; core.rotation.x += .004; ring.rotation.z += .005; ring2.rotation.z -= .003; }
+    const s = 1 + Math.sin(time * 2) * .06 + vel * .01; core.scale.setScalar(s);
+    cx += (px - cx) * .18; cy += (py - cy) * .18; cur.style.transform = `translate(${cx}px,${cy}px)`;
+    R.render(S, cam);
+    if (!still) requestAnimationFrame(loop);
+  })();
+} catch (e) { console.warn("3D background off:", e); }
+</script>
+</body>
+</html>
